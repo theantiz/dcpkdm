@@ -1,0 +1,250 @@
+@import "react-datepicker/dist/react-datepicker.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 16px; /* reduced from 18px to 16px */
+}
+
+:root {
+  --bg: #0f0e0c;
+  --panel: #171412;
+  --gold: #caa86b;
+  --sepia: #6d4a2f;
+  --muted: #c7b79c;
+  --grain-opacity: 0.06;
+  --vignette-strength: 0.65;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--muted);
+  font-family: Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  background-image: url("/grain.png");
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+.film-grain.no-img {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.02) 0,
+      rgba(255,255,255,0.02) 1px,
+      rgba(0,0,0,0) 1px,
+      rgba(0,0,0,0) 4px
+    );
+}
+
+.cinema-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      60% 55% at 50% 38%,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,var(--vignette-strength)) 60%,
+      rgba(0, 0, 0, 0.94) 100%
+    );
+  mix-blend-mode: color;
+}
+
+.film-scratch {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("/scratches.png");
+  background-size: auto 100%;
+  background-repeat: repeat;
+  mix-blend-mode: screen;
+  animation: scratchMove 18s linear infinite;
+}
+
+.film-scratch.no-img {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 0.5px,
+    rgba(255,255,255,0) 0.5px
+  );
+  background-size: 100% 120%;
+  animation: scratchMoveSmall 22s linear infinite;
+}
+
+@keyframes scratchMove {
+  from { background-position: 0 0; opacity: 0.06; }
+  50% { background-position: 0 200px; opacity: 0.09; }
+  to { background-position: 0 0; opacity: 0.06; }
+}
+
+@keyframes scratchMoveSmall {
+  from { transform: translateY(0); opacity: 0.03; }
+  50% { transform: translateY(40px); opacity: 0.06; }
+  to { transform: translateY(0); opacity: 0.03; }
+}
+
+.film-burn {
+  position: fixed;
+  inset: 0;
+  z-index: 75;
+  pointer-events: none;
+  background-image: url("/filmburn.png");
+  background-position: top right;
+  background-size: 30% auto;
+  background-repeat: no-repeat;
+  opacity: 0.14;
+}
+
+.film-burn.no-img {
+  background: radial-gradient(circle at 95% 5%, rgba(210,170,110,0.06), transparent 10%);
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(20,18,16,0.96), rgba(16,14,12,0.96));
+  border: 1px solid rgba(200,160,80,0.07);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.hero-title {
+  font-family: Georgia, serif;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 3rem; /* increased font size */
+}
+
+.hero-sub {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0.9rem auto 1.6rem;
+  font-size: 1.5rem; /* increased font size */
+}
+
+.hero-sub {
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0.9rem auto 1.6rem;
+  font-size: 1.5rem; /* increased font size */
+}
+
+.btn-gold {
+  background: linear-gradient(180deg, rgba(202,168,107,0.98), rgba(170,132,75,0.98));
+  color: #111;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(120,90,50,0.12);
+}
+
+@media (min-width: 640px) {
+  .btn-gold {
+    padding: 0.75rem 1.6rem;
+    font-size: 1rem;
+  }
+}
+
+.btn-gold:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+
+.input-basic {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(140,115,80,0.12);
+  background: rgba(18,16,14,0.96);
+  color: var(--muted);
+  outline: none;
+}
+
+.input-basic:focus {
+  box-shadow: 0 0 0 4px rgba(210,170,100,0.04);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-big {
+  text-align: center;
+  padding: 2.4rem 1rem;
+  color: var(--muted);
+  font-family: Georgia, serif;
+}
+
+.footer-big a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.sep-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(200,160,100,0.06),
+    rgba(200,160,100,0.02)
+  );
+  margin: 2rem 0;
+}
+
+.vintage-calendar {
+  background: #1a1816 !important;
+  border: 1px solid rgba(200,160,100,0.15) !important;
+  color: #d2b57b !important;
+  font-family: Georgia, serif !important;
+}
+
+.vintage-calendar .react-datepicker__header {
+  background: #1a1816 !important;
+  border-bottom: 1px solid rgba(200,160,100,0.15) !important;
+}
+
+.vintage-calendar .react-datepicker__day-name {
+  color: #967a52 !important;
+}
+.vintage-calendar .react-datepicker__current-month,
+.vintage-calendar .react-datepicker__day {
+  color: #d2b57b !important;
+}
+.vintage-calendar .react-datepicker__day:hover {
+  background: rgba(210,181,123,0.15) !important;
+}
+.vintage-calendar .react-datepicker__day--selected {
+  background: #d2b57b !important;
+  color: #1a1816 !important;
+  font-weight: bold;
+}
+
+.vintage-popper {
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.4));
+}
