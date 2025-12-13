@@ -59,8 +59,6 @@ This project introduced real-world challenges:
 * Securing APIs with Spring Security
 * Creating reproducible production builds
 
-## 📂 GitHub Repository
-https://lnkd.in/dqiXDsuE
 
 ## 🧠 Why This Matters
 This system demonstrates how cryptography protects digital cinema distribution while remaining practical, secure, and automated.
