@@ -5,6 +5,17 @@ node_modules/
 dist/
 build/
 .vite/
+backend/target/
+
+# Java / Spring Boot
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.classpath
+.project
+.settings/
 
 # Environment files
 .env
