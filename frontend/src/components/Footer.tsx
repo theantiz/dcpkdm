@@ -15,7 +15,7 @@ export default function Footer() {
             >
               Sample Certificate
             </a>
-            <span className="text-[#caa86b]/30">|</span>
+            <span className="hidden sm:inline text-[#caa86b]/30">|</span>
             <a
               href="/dcpDigest.xml"
               download

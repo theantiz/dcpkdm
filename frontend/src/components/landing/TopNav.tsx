@@ -36,7 +36,7 @@ export default function TopNav({ isNavScrolled, onLaunchBuilder }) {
               DCP-KDM
             </p>
             <p
-              className={`text-[#caa86b]/70 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              className={`hidden sm:block text-[#caa86b]/70 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 isNavScrolled ? "text-[10px] opacity-85" : "text-[11px]"
               }`}
             >
@@ -48,7 +48,7 @@ export default function TopNav({ isNavScrolled, onLaunchBuilder }) {
           <Button
             size={isNavScrolled ? "sm" : "default"}
             className={`rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              isNavScrolled ? "text-[11px] px-3" : "text-xs"
+              isNavScrolled ? "text-[11px] px-2.5 sm:px-3" : "text-[11px] sm:text-xs px-3 sm:px-4"
             }`}
             onClick={onLaunchBuilder}
           >

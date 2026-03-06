@@ -16,7 +16,7 @@ export default function HeroSection({ onGenerate, onFlow, featuredMovie }) {
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-mono tracking-wide text-[#caa86b]">LIVE | SECURE PIPELINE</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-[#f7edd6]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-[#f7edd6]">
             Cinema-grade KDMs in minutes, not days.
           </h1>
           <p className="max-w-2xl text-base sm:text-lg text-[#d9c9ac]/80">
@@ -41,17 +41,17 @@ export default function HeroSection({ onGenerate, onFlow, featuredMovie }) {
 
         <div className="relative">
           <Card className="glass-card">
-            <div className="flex items-center justify-between mb-4">
-              <div>
+            <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-[0.2em] text-[#caa86b]/70">Showing</p>
-                <p className="text-3xl font-semibold text-[#f5e8cf]">
+                <p className="text-2xl sm:text-3xl font-semibold text-[#f5e8cf] break-words">
                   {featuredMovie?.title || "Tonight | 21:00"}
                 </p>
                 <p className="text-sm text-[#caa86b]/85 mt-1">
                   {featuredMovie?.tag || "Live cinema lineup"}
                 </p>
               </div>
-              <div className="h-12 w-12 rounded-full bg-[#caa86b]/15 flex items-center justify-center text-[#caa86b] font-bold">
+              <div className="h-12 w-12 shrink-0 rounded-full bg-[#caa86b]/15 flex items-center justify-center text-[#caa86b] font-bold">
                 4K
               </div>
             </div>
@@ -69,11 +69,11 @@ export default function HeroSection({ onGenerate, onFlow, featuredMovie }) {
                 <span className="flex items-center gap-1 text-emerald-400 font-semibold">Verified</span>
               </div>
             </div>
-            <div className="mt-6 h-32 rounded-xl overflow-hidden border border-[#caa86b]/25 bg-[#0c0b0a] relative">
+            <div className="relative mt-6 h-32 overflow-hidden rounded-xl border border-[#caa86b]/25 bg-[#0c0b0a]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(202,168,107,0.15),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_35%)]" />
-              <div className="absolute inset-0 flex items-center justify-between px-5 text-[#f5e8cf] font-semibold text-lg">
-                <span>Encrypting Reels</span>
-                <span className="text-sm text-[#caa86b]/80">82% | 9s</span>
+              <div className="absolute inset-0 flex items-center justify-between gap-4 px-4 sm:px-5 text-[#f5e8cf] font-semibold text-base sm:text-lg">
+                <span className="truncate">Encrypting Reels</span>
+                <span className="shrink-0 text-xs sm:text-sm text-[#caa86b]/80">82% | 9s</span>
               </div>
               <div className="absolute bottom-0 left-0 h-2 bg-[#caa86b] transition-all duration-500 w-[82%]" />
             </div>

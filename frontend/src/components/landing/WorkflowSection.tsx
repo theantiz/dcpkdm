@@ -29,7 +29,7 @@ export default function WorkflowSection({ isWorkflowLocked, activeWorkflowStep, 
           </div>
           <Card className="rounded-xl border-[#f1c774]/35 bg-[#15110c]/85 p-3">
             <p className="text-[11px] uppercase tracking-[0.14em] text-[#caa86b]/70">Active Step</p>
-            <p className="text-lg font-semibold text-[#f5e8cf]">
+            <p className="text-base sm:text-lg font-semibold text-[#f5e8cf] break-words">
               {String(activeWorkflowStep + 1).padStart(2, "0")} - {steps[activeWorkflowStep].title}
             </p>
           </Card>
@@ -78,7 +78,7 @@ export default function WorkflowSection({ isWorkflowLocked, activeWorkflowStep, 
                 );
               })}
             </div>
-            <div className="mt-3 grid grid-cols-4 gap-2 text-[10px] sm:text-xs text-[#caa86b]/80">
+            <div className="mt-3 grid grid-cols-2 gap-2 text-[10px] sm:grid-cols-4 sm:text-xs text-[#caa86b]/80">
               {visualSteps.map((step) => (
                 <p key={step.title} className="truncate">{step.title}</p>
               ))}
