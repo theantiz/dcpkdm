@@ -1,0 +1,20 @@
+{
+  "name": "dcpkdm-root",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend run start",
+    "lint": "npm --prefix frontend run lint"
+  },
+  "dependencies": {
+    "next": "^16.1.6"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1"
+  }
+}
