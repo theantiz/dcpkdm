@@ -29,7 +29,7 @@ No KDM = No movie playback 🎥
 * Upload projector X.509 certificate
 * Generate standards-compliant KDM XML
 * Secure Spring Boot REST APIs
-* Clean React + Tailwind UI
+* Responsive Next.js + Tailwind UI
 * Vintage cinema-inspired design
 
 ## 🔐 Cryptography Used
@@ -41,11 +41,11 @@ No KDM = No movie playback 🎥
 * Base64 encoding for XML embedding
 
 ## 🛠️ Tech Stack
-* Backend: Java 17, Spring Boot
-* Crypto: Bouncy Castle, JAXB
-* Frontend: React, Tailwind CSS
-* DevOps: Docker, Render, Vercel
-* Build: Maven
+* Backend: Java 17, Spring Boot 3, Spring Security
+* Crypto/XML: Bouncy Castle, JAXB, Apache XML Security
+* Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS
+* Tooling: ESLint, PostCSS, Maven
+* DevOps/Hosting: Docker, Render, Vercel
 
 ## 🚀 DevOps & Deployment Learnings
 This project introduced real-world challenges:
