@@ -1,0 +1,16 @@
+# Dependency directories
+**/node_modules/**
+
+# Build and tooling outputs
+**/dist/**
+**/build/**
+**/.next/**
+**/.turbo/**
+**/coverage/**
+**/.cache/**
+**/out/**
+**/.dart_tool/**
+
+# Repository and IDE metadata
+**/.git/**
+**/.idea/**
