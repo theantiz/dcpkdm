@@ -12,30 +12,30 @@ import KdmSection from "./KdmSection";
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";
 
-const POSTER_CATALOG = [
+const FALLBACK_POSTERS = [
   {
-    title: "Sirat",
-    tag: "ES | 2025",
-    img: "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg",
-  },
-  {
-    title: "Manohara",
-    tag: "TA | 1954",
-    img: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
-  },
-  {
-    title: "Das Millionenschnitzel",
-    tag: "DE | 2026",
+    title: "The Dark Knight",
+    tag: "EN | 2008",
     img: "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg",
   },
   {
-    title: "The World Will Tremble",
-    tag: "EN | 2025",
+    title: "Interstellar",
+    tag: "EN | 2014",
+    img: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
+  },
+  {
+    title: "Inception",
+    tag: "EN | 2010",
+    img: "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg",
+  },
+  {
+    title: "Titanic",
+    tag: "EN | 1997",
     img: "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg",
   },
   {
-    title: "Sisu: Road to Revenge",
-    tag: "FI | 2025",
+    title: "The Matrix",
+    tag: "EN | 1999",
     img: "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg",
   },
 ];
@@ -88,7 +88,7 @@ export default function DcpKdmLanding() {
   const workflowWheelDirRef = useRef(0);
   const revealWheelAccumRef = useRef(0);
   const revealWheelDirRef = useRef(0);
-  const [posters, setPosters] = useState(() => shufflePosters(POSTER_CATALOG));
+  const [posters, setPosters] = useState(() => shufflePosters(FALLBACK_POSTERS));
   const [formSessionKey, setFormSessionKey] = useState(() => Date.now());
   useScrollFade(".fade-in", [showMain]);
 
@@ -116,7 +116,7 @@ export default function DcpKdmLanding() {
     let cancelled = false;
 
     if (!TMDB_API_KEY) {
-      setPosters(shufflePosters(POSTER_CATALOG));
+      setPosters(shufflePosters(FALLBACK_POSTERS));
       return () => {
         cancelled = true;
       };
@@ -162,11 +162,15 @@ export default function DcpKdmLanding() {
 
         const normalize = (items, label) =>
           (items || [])
-            .filter((item) => item && item.poster_path)
+            .filter((item) => {
+              if (!item || !item.poster_path) return false;
+              const year = Number((item.release_date || "").slice(0, 4));
+              return Number.isNaN(year) || year !== 2026;
+            })
             .map((item) => ({
               id: item.id || `${item.title}-${item.poster_path}`,
               title: item.title || item.original_title || "Untitled",
-              tag: `${label} | ${item.release_date?.slice(0, 4) || "Now"}`,
+              tag: `${label} | ${item.release_date?.slice(0, 4) || "Random"}`,
               img: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
             }));
 
@@ -199,14 +203,14 @@ export default function DcpKdmLanding() {
           if (merged.length >= 20) break;
         }
 
-        const mapped = merged.length > 0 ? shufflePosters(merged).slice(0, 20) : shufflePosters(POSTER_CATALOG);
+        const mapped = merged.length > 0 ? shufflePosters(merged).slice(0, 20) : shufflePosters(FALLBACK_POSTERS);
 
         if (!cancelled && mapped.length > 0) {
           setPosters(shufflePosters(mapped));
         }
       } catch (err) {
         if (!cancelled) {
-          setPosters(shufflePosters(POSTER_CATALOG));
+          setPosters(shufflePosters(FALLBACK_POSTERS));
         }
       }
     };
